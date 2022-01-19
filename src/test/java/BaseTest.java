@@ -11,7 +11,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        Configuration.headless = true;
+        //Configuration.headless = true;
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
@@ -20,9 +20,9 @@ public class BaseTest {
         Configuration.savePageSource = false;
         Configuration.timeout = 10000;
 
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("headless");
-        Configuration.browserCapabilities = chromeOptions;
+//        ChromeOptions chromeOptions = new ChromeOptions();
+//        chromeOptions.addArguments("headless");
+//        Configuration.browserCapabilities = chromeOptions;
     }
 
     @AfterClass(alwaysRun = true)
