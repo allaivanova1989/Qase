@@ -13,8 +13,8 @@ public class CreateTestPlanTest extends BaseTest {
         $("#inputEmail").sendKeys(email);
         $(By.xpath("//*[@id='inputPassword']")).setValue(password);
         $("#btnLogin").click();
-        $(By.xpath("//a[@class=\"defect-title\"][text()='ShareLane']")).click();
-        $(By.xpath("//span[@class=\"submenu-item-text\"][text()='Test Plans']")).click();
+        $(By.xpath("//a[@class='defect-title'][text()='ShareLane']")).click();
+        $(By.xpath("//span[@class='submenu-item-text'][text()='Test Plans']")).click();
         $("#createButton").click();
         $("#title").sendKeys("Regression2");
         $(By.xpath("//p[@class='empty-node']")).sendKeys("Full Regression");
