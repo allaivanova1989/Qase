@@ -1,15 +1,22 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import pages.HomePage;
+import pages.LoginPage;
 import utils.PropertyReader;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class BaseTest {
     String email, password;
+    HomePage homePage;
+    LoginPage loginPage;
 
     @BeforeClass
     public void setUp() {
@@ -21,6 +28,8 @@ public class BaseTest {
         //   Configuration.clickViaJs = true;
         Configuration.savePageSource = false;
         Configuration.timeout = 10000;
+        homePage = new HomePage();
+        loginPage = new LoginPage();
 
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("headless");
@@ -30,5 +39,6 @@ public class BaseTest {
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         getWebDriver().quit();
+
     }
 }
