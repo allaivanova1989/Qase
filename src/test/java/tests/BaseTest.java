@@ -6,8 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import pages.HomePage;
-import pages.LoginPage;
+import pages.*;
 import utils.PropertyReader;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -17,6 +16,9 @@ public class BaseTest {
     String email, password;
     HomePage homePage;
     LoginPage loginPage;
+    ProjectsPage projectsPage;
+    WorkspacePage workspacePage;
+    SomeProjectPage someProjectPage;
 
     @BeforeClass
     public void setUp() {
@@ -30,6 +32,9 @@ public class BaseTest {
         Configuration.timeout = 10000;
         homePage = new HomePage();
         loginPage = new LoginPage();
+        projectsPage = new ProjectsPage();
+        workspacePage = new WorkspacePage();
+        someProjectPage = new SomeProjectPage();
 
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("headless");
