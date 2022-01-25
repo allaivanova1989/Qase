@@ -48,14 +48,14 @@ public class LoginTest extends BaseTest {
         $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage","Заполните это поле."));
     }
 
-//    @Test(description = "Login to the site using an invalid email and invalid password")
-//    public void loginWithInvalidEmailAndInvalidPassword() {
-//        log.debug("Login to the site using an invalid email and invalid password");
-//        open("/login");
-//        loginPage.login("ggiih","dtdtfyig");
-//
-//        $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage","Адрес электронной почты должен содержать символ \"@\".*"));
-//    }
+    @Test(description = "Login to the site using an invalid email and invalid password")
+    public void loginWithInvalidEmailAndInvalidPassword() {
+        log.debug("Login to the site using an invalid email and invalid password");
+        open("/login");
+        loginPage.login("ggiih","dtdtfyig");
+
+        $(LoginPage.FIELD_EMAIL).shouldHave(attributeMatching("validationMessage","Адрес электронной почты должен содержать символ \"@\".*"));
+    }
 
 
 }
