@@ -19,6 +19,9 @@ public class BaseTest {
     ProjectsPage projectsPage;
     WorkspacePage workspacePage;
     SomeProjectPage someProjectPage;
+    ProjectListPage projectListPage;
+    CreateTestCaseModalPage createTestCaseModalPage;
+    TestCaseDetailsPage testCaseDetailsPage;
 
     @BeforeClass
     public void setUp() {
@@ -35,6 +38,10 @@ public class BaseTest {
         projectsPage = new ProjectsPage();
         workspacePage = new WorkspacePage();
         someProjectPage = new SomeProjectPage();
+        projectListPage = new ProjectListPage();
+        createTestCaseModalPage = new CreateTestCaseModalPage();
+        testCaseDetailsPage = new TestCaseDetailsPage();
+
 
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("headless");

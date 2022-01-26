@@ -4,9 +4,7 @@ import com.codeborne.selenide.Condition;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 @Log4j2
