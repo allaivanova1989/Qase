@@ -9,15 +9,15 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class ProjectsTest extends BaseTest{
-    @Test(description = "Create new projects.")
-    public void createProject (){
-        open("/login");
-        loginPage.login(email,password);
-        projectsPage.createNewProject();
-
-
-
-    }
+//    @Test(description = "Create new projects.")
+//    public void createProject (){
+//        open("/login");
+//        loginPage.login(email,password);
+//        projectsPage.createNewProject();
+//
+//
+//
+//    }
     @Test(description = "Go to the page workspace.")
     public void goToWorkspace (){
         open("/login");

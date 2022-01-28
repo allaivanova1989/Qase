@@ -20,7 +20,7 @@ public class ProjectAdapter extends BaseAdapter {
         return gson.fromJson(response, PositiveResponseStatus.class);
     }
 
-    public String delete(int statusCode) {
-        return delete(statusCode);
-    }
+//    public String delete(int statusCode) {
+//        return delete(statusCode);
+//    }
 }
