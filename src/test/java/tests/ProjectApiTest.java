@@ -41,16 +41,16 @@ public class ProjectApiTest {
 
     @Test
     public void getProjectByRealNameAndNotEmptyTest() {
-        PositiveResponseStatus actual = new ProjectAdapter().getProject2(200, "TMSALLA");
+        PositiveResponseStatus actual = new ProjectAdapter().getProject2(200, "DEMO");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()
-                        .title("Project for TMS")
-                        .code("TMSALLA")
+                        .title("Demo Project")
+                        .code("DEMO")
                         .counts(Counts.builder()
-                                .cases(13)
-                                .suites(1)
-                                .milestones(0)
+                                .cases(10)
+                                .suites(3)
+                                .milestones(2)
                                 .runs(Runs.builder()
                                         .total(0)
                                         .active(0)

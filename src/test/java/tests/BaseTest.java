@@ -4,8 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import pages.*;
 import utils.PropertyReader;
 
@@ -23,9 +22,9 @@ public class BaseTest {
     CreateTestCaseModalPage createTestCaseModalPage;
     TestCaseDetailsPage testCaseDetailsPage;
 
-    @BeforeClass
+    @BeforeTest
     public void setUp() {
-        //Configuration.headless = true;
+//        Configuration.headless = true;
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
@@ -48,7 +47,7 @@ public class BaseTest {
 //        Configuration.browserCapabilities = chromeOptions;
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void tearDown() {
         getWebDriver().quit();
 
