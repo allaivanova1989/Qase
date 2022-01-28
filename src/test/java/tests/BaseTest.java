@@ -22,7 +22,7 @@ public class BaseTest {
     CreateTestCaseModalPage createTestCaseModalPage;
     TestCaseDetailsPage testCaseDetailsPage;
 
-    @BeforeTest
+    @AfterClass
     public void setUp() {
 //        Configuration.headless = true;
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
@@ -47,7 +47,7 @@ public class BaseTest {
 //        Configuration.browserCapabilities = chromeOptions;
     }
 
-    @AfterTest(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         getWebDriver().quit();
 
