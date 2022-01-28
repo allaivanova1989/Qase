@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
 public class LoginPage {
-    public static final By FIELD_EMAIL = By.cssSelector("#inputEmail");
+    public static final By FIELD_EMAIL = By.id("inputEmail");
     public static final By FIELD_PASSWORD = By.xpath("//*[@id='inputPassword']");
     public static final By BUTTON_LOGIN = By.cssSelector("#btnLogin");
 
