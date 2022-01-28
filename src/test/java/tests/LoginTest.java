@@ -27,7 +27,7 @@ public class LoginTest extends BaseTest {
         open("/login");
         loginPage.login(email,"");
 
-        $(LoginPage.FIELD_PASSWORD).shouldHave(attribute("validationMessage","Заполните это поле."));
+        $(LoginPage.FIELD_PASSWORD).shouldHave(attribute("validationMessage"));
     }
 
     @Test(description = "Login to the site using an empty email and valid password")
@@ -36,7 +36,7 @@ public class LoginTest extends BaseTest {
         open("/login");
         loginPage.login("",password);
 
-        $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage","Заполните это поле."));
+        $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage"));
     }
 
     @Test(description = "Login to the site using an empty email and empty password")
@@ -45,7 +45,7 @@ public class LoginTest extends BaseTest {
         open("/login");
         loginPage.login("","");
 
-        $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage","Заполните это поле."));
+        $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage"));
     }
 
     @Test(description = "Login to the site using an invalid email and invalid password")
@@ -54,7 +54,7 @@ public class LoginTest extends BaseTest {
         open("/login");
         loginPage.login("ggiih","dtdtfyig");
 
-        $(LoginPage.FIELD_EMAIL).shouldHave(attributeMatching("validationMessage","Адрес электронной почты должен содержать символ \"@\".*"));
+        $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage"));
     }
 
 
