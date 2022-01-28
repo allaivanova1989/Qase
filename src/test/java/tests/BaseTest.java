@@ -22,14 +22,14 @@ public class BaseTest {
     CreateTestCaseModalPage createTestCaseModalPage;
     TestCaseDetailsPage testCaseDetailsPage;
 
-    @AfterClass
+    @BeforeMethod
     public void setUp() {
-//        Configuration.headless = true;
+     //  Configuration.headless = true;
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
         Configuration.browser = "chrome";
-        //   Configuration.clickViaJs = true;
+           Configuration.clickViaJs = true;
         Configuration.savePageSource = false;
         Configuration.timeout = 10000;
         homePage = new HomePage();
@@ -47,7 +47,7 @@ public class BaseTest {
 //        Configuration.browserCapabilities = chromeOptions;
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         getWebDriver().quit();
 
