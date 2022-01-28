@@ -4,9 +4,11 @@ import com.codeborne.selenide.Condition;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+
 @Log4j2
 public class HomePageTest extends BaseTest {
     @Test(description = "Go to the login page")
@@ -58,7 +60,7 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test(description = "Viewing usage information")
-    public void cheсkTermsOfService() {
+    public void checkTermsOfService() {
         log.info("Viewing usage information");
         open("");
         homePage.clickOnTermsOfService();
