@@ -15,7 +15,7 @@ public class TestCaseFactory {
                 .description(faker.expression("Description for test case."))
                 .suite("SignUp")
                 .severity("Normal")
-                .priority("Medium")
+                .priority("Low")
                 .type("Smoke")
                 .layer("E2E")
                 .isFlaky("No")

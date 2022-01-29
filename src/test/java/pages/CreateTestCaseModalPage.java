@@ -19,7 +19,7 @@ private static final By SAVE_AND_CREATE_ANOTHER_BUTTON =By.cssSelector("[class='
         log.info("Check if the page CreateTestCaseModalPage has opened");
         return isExist(SAVE_AND_CREATE_ANOTHER_BUTTON);
     }
-    public TestCaseDetailsPage create(TestCase testCase) {
+    public TestCaseDetailsPage create(TestCase testCase) throws InterruptedException {
         log.info("Creating testCase");
         new InputForCreateTestCase( "Title").write(testCase.getTitle());
 

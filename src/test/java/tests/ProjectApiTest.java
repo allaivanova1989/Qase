@@ -1,15 +1,18 @@
 package tests;
 
 import adapters.ProjectAdapter;
+import lombok.extern.log4j.Log4j2;
 import modals.*;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
+@Log4j2
 public class ProjectApiTest {
     @Test
     public void negativeProjectApiTest() {
+        log.info("Creating new project with incorrect code.");
         Project project = Project.builder()
                 .title("blabla")
                 .code("!!!!!")
@@ -30,6 +33,7 @@ public class ProjectApiTest {
 
     @Test
     public void getProjectByInvalidNameTest() {
+        log.info("Search project by incorrect code.");
         NegativeResponseStatus actual = new ProjectAdapter().getProject(404, "QWEQWwws");
         NegativeResponseStatus expected = NegativeResponseStatus.builder()
                 .status(false)
@@ -41,6 +45,7 @@ public class ProjectApiTest {
 
     @Test
     public void getProjectByRealNameAndNotEmptyTest() {
+        log.info("Search project by correct code and name with cases, suites and other.");
         PositiveResponseStatus actual = new ProjectAdapter().getProject2(200, "DEMO");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
@@ -68,6 +73,7 @@ public class ProjectApiTest {
 
     @Test
     public void getEmptyProjectByRealNameTest() {
+        log.info("Search project by correct code and name without cases, suites and other.");
         PositiveResponseStatus actual = new ProjectAdapter().getProject2(200, "B000BSH8AQ");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)

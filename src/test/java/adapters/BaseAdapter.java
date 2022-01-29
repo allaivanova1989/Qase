@@ -1,13 +1,16 @@
 package adapters;
 
 import com.google.gson.Gson;
+import lombok.extern.log4j.Log4j2;
 
 import static io.restassured.RestAssured.given;
 
+@Log4j2
 public class BaseAdapter {
     Gson gson = new Gson();
 
     public String post(String body, int statusCode, String url) {
+        log.info("Post request");
 
         return given().
                 log().all().
@@ -27,6 +30,7 @@ public class BaseAdapter {
     }
 
     public String get(int statusCode, String url) {
+        log.info("Get request");
 
         return given().
                 log().all().

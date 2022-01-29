@@ -1,6 +1,5 @@
 package adapters;
 
-
 import modals.PositiveResponseStatus;
 import modals.Project;
 import modals.NegativeResponseStatus;
