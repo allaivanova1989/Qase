@@ -2,8 +2,6 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 import pages.*;
@@ -27,7 +25,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         log.info("Setup options and configurations.");
-//        Configuration.headless = true;
+        Configuration.headless = true;
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
@@ -46,7 +44,7 @@ public class BaseTest {
 
 
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("start-maximized");
+        chromeOptions.addArguments("headless");
         Configuration.browserCapabilities = chromeOptions;
     }
 

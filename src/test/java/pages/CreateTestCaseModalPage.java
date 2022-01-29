@@ -36,6 +36,7 @@ private static final By SAVE_AND_CREATE_ANOTHER_BUTTON =By.cssSelector("[class='
         new DropDownForCreateTestCase("Automation status").selectOption(testCase.getAutomationStatus());
         new InputForCreateTestCase( "Pre-conditions").write(testCase.getPreConditions());
         new InputForCreateTestCase( "Post-conditions").write(testCase.getPostConditions());
+        $(By.xpath("//a[contains(text(),' Add step')]")).scrollIntoView(true);
         $(By.xpath("//a[contains(text(),' Add step')]")).click();
         new InputForCreateTestCase( "Action").writeForAddSteps(testCase.getAction());
         new InputForCreateTestCase( "Input data").writeForAddSteps(testCase.getInputData());
