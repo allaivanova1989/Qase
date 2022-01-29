@@ -27,12 +27,12 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         log.info("Setup options and configurations.");
-     //  Configuration.headless = true;
+//        Configuration.headless = true;
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
         Configuration.browser = "chrome";
-    //       Configuration.clickViaJs = true;
+        //       Configuration.clickViaJs = true;
         Configuration.savePageSource = false;
         Configuration.timeout = 10000;
         homePage = new HomePage();
@@ -45,9 +45,9 @@ public class BaseTest {
         testCaseDetailsPage = new TestCaseDetailsPage();
 
 
-//        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("headless");
-//        Configuration.browserCapabilities = chromeOptions;
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("start-maximized");
+        Configuration.browserCapabilities = chromeOptions;
     }
 
     @AfterMethod(alwaysRun = true)
