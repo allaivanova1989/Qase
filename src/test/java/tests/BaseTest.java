@@ -28,7 +28,7 @@ public class BaseTest {
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
         Configuration.browser = "chrome";
-        //       Configuration.clickViaJs = true;
+        //      Configuration.clickViaJs = true;
         Configuration.savePageSource = false;
         Configuration.timeout = 10000;
         homePage = new HomePage();

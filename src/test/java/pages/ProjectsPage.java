@@ -17,7 +17,7 @@ public class ProjectsPage {
     public static final By HYPERLINK_REPORTS = By.xpath("//span[contains(text(),'Reports')]");
     public static final By FIELD_FOR_NAME = By.cssSelector("[placeholder='For example: Web Application']");
     public static final By FIELD_FOR_CODE_PROJECT = By.cssSelector("[placeholder='For example: WA']");
-    private   String CODE;
+    private String CODE;
 
     public String getCODE() {
         return CODE;
@@ -49,6 +49,7 @@ public class ProjectsPage {
         $(STATUS_BUTTON).click();
         $(By.xpath("//button[contains(text(),'Select all')]")).click();
     }
+
     @Step("Change  filter")
     public void chooseHasAnyRun() {
         log.info("Change  filter");
@@ -57,13 +58,13 @@ public class ProjectsPage {
         $(By.xpath("//label[contains(text(),'Has any run')]")).click();
 
     }
+
     @Step("Create new project")
     public void createNewProject() {
         log.debug("Create new project");
         $(CREATE_NEW_PROJECT_BUTTON).click();
         $(FIELD_FOR_NAME).sendKeys(faker.gameOfThrones().dragon());
-        $(FIELD_FOR_CODE_PROJECT).sendKeys("QAQA");
-       CODE = $(FIELD_FOR_CODE_PROJECT).getValue();
+        CODE = $(FIELD_FOR_CODE_PROJECT).getValue();
         $(By.xpath("//label[contains(text(),'Public')]")).click();
 
         $("[type='submit']").click();
