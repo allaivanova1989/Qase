@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,12 +19,14 @@ public class ProjectListPage extends BasePage{
         return isExist(Projects_PICTURE);
     }
 
+    @Step("Open the page ProjectListPage")
     public ProjectListPage opened() {
         log.info("Open the page ProjectListPage");
         open( "https://app.qase.io/project/TMSALLA?view=2&suite=1");
         return this;
     }
 
+    @Step("Click button case on the page ProjectListPage")
     public CreateTestCaseModalPage clickCase() {
         log.info("Click button case on the page ProjectListPage");
         $(By.id("create-case-button")).click();

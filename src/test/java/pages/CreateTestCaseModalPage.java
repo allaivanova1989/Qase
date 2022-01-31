@@ -2,6 +2,7 @@ package pages;
 
 import elements.DropDownForCreateTestCase;
 import elements.InputForCreateTestCase;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import modals.TestCase;
 import org.openqa.selenium.By;
@@ -19,10 +20,10 @@ private static final By SAVE_AND_CREATE_ANOTHER_BUTTON =By.cssSelector("[class='
         log.info("Check if the page CreateTestCaseModalPage has opened");
         return isExist(SAVE_AND_CREATE_ANOTHER_BUTTON);
     }
+    @Step("Creating testCase")
     public TestCaseDetailsPage create(TestCase testCase) throws InterruptedException {
         log.info("Creating testCase");
         new InputForCreateTestCase( "Title").write(testCase.getTitle());
-
         new DropDownForCreateTestCase("Status").selectOption(testCase.getStatus());
         new InputForCreateTestCase( "Description").write(testCase.getDescription());
         new DropDownForCreateTestCase("Suite").selectOption(testCase.getSuite());
@@ -45,6 +46,7 @@ private static final By SAVE_AND_CREATE_ANOTHER_BUTTON =By.cssSelector("[class='
         return clickSave();
 
     }
+    @Step("Click button SAVE on the page CreateTestCaseModalPage")
     private TestCaseDetailsPage clickSave() {
         log.info("Click button SAVE on the page CreateTestCaseModalPage");
         $(By.id("save-case")).click();

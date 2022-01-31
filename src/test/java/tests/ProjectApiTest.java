@@ -34,7 +34,7 @@ public class ProjectApiTest {
     @Test
     public void getProjectByInvalidNameTest() {
         log.info("Search project by incorrect code.");
-        NegativeResponseStatus actual = new ProjectAdapter().getProject(404, "QWEQWwws");
+        NegativeResponseStatus actual = new ProjectAdapter().getProjectFromNegativeResponse(404, "QWEQWwws");
         NegativeResponseStatus expected = NegativeResponseStatus.builder()
                 .status(false)
                 .errorMessage("Project is not found.")
@@ -46,7 +46,7 @@ public class ProjectApiTest {
     @Test
     public void getProjectByRealNameAndNotEmptyTest() {
         log.info("Search project by correct code and name with cases, suites and other.");
-        PositiveResponseStatus actual = new ProjectAdapter().getProject2(200, "DEMO");
+        PositiveResponseStatus actual = new ProjectAdapter().getProjectFromPositiveResponse(200, "DEMO");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()
@@ -74,7 +74,7 @@ public class ProjectApiTest {
     @Test
     public void getEmptyProjectByRealNameTest() {
         log.info("Search project by correct code and name without cases, suites and other.");
-        PositiveResponseStatus actual = new ProjectAdapter().getProject2(200, "B000BSH8AQ");
+        PositiveResponseStatus actual = new ProjectAdapter().getProjectFromPositiveResponse(200, "B000BSH8AQ");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()

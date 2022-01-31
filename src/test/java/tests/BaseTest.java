@@ -2,13 +2,11 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 import pages.*;
 import utils.PropertyReader;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 @Log4j2
 public class BaseTest {
@@ -16,7 +14,6 @@ public class BaseTest {
     HomePage homePage;
     LoginPage loginPage;
     ProjectsPage projectsPage;
-    WorkspacePage workspacePage;
     SomeProjectPage someProjectPage;
     ProjectListPage projectListPage;
     CreateTestCaseModalPage createTestCaseModalPage;
@@ -25,8 +22,8 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         log.info("Setup options and configurations.");
-//        Configuration.headless = true;
-        Configuration.browserSize="1920x1080";
+        Configuration.headless = true;
+        Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
@@ -37,7 +34,6 @@ public class BaseTest {
         homePage = new HomePage();
         loginPage = new LoginPage();
         projectsPage = new ProjectsPage();
-        workspacePage = new WorkspacePage();
         someProjectPage = new SomeProjectPage();
         projectListPage = new ProjectListPage();
         createTestCaseModalPage = new CreateTestCaseModalPage();

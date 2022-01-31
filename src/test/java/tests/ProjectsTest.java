@@ -4,20 +4,20 @@ import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.ProjectsPage;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+
 public class ProjectsTest extends BaseTest{
-//    @Test(description = "Create new projects.")
-//    public void createProject (){
-//        open("/login");
-//        loginPage.login(email,password);
-//        projectsPage.createNewProject();
-//
-//
-//
-//    }
+    @Test(description = "Create new projects.")
+    public void createProject (){
+        open("/login");
+        loginPage.login(email,password);
+        projectsPage.createNewProject();
+        $(By.xpath("//div[@class='app']//div//h1")).shouldHave(Condition.text(projectsPage.getCODE()));
+
+    }
+
     @Test(description = "Go to the page workspace.")
     public void goToWorkspace (){
         open("/login");

@@ -6,13 +6,15 @@ import modals.TestCaseFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.open;
+import java.io.IOException;
+
+import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
 public class CreateTestCaseTest extends BaseTest{
 
     @Test(description = "Creating new account")
-    public void testCaseShouldBeCreated() throws InterruptedException {
+    public void testCaseShouldBeCreated() throws InterruptedException, IOException {
         log.info("Creating new test case.");
         open("/login");
         loginPage.login(email,password);

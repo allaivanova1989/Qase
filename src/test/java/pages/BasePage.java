@@ -15,7 +15,7 @@ public abstract class BasePage {
             return $(locator).shouldBe(Condition.visible).isDisplayed();
 
         } catch (NoSuchElementException ex) {
-            System.out.println("......" + ex.getMessage());
+            log.error("......" + ex.getMessage());
             return false;
         }
 

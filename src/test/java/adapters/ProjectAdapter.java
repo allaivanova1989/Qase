@@ -10,11 +10,11 @@ public class ProjectAdapter extends BaseAdapter {
         return gson.fromJson(response, NegativeResponseStatus.class);
     }
 
-    public NegativeResponseStatus getProject(int statusCode, String codeProject) {
+    public NegativeResponseStatus getProjectFromNegativeResponse(int statusCode, String codeProject) {
         String response = super.get(statusCode, "project/" + codeProject);
         return gson.fromJson(response, NegativeResponseStatus.class);
     }
-    public PositiveResponseStatus getProject2(int statusCode, String codeProject) {
+    public PositiveResponseStatus getProjectFromPositiveResponse(int statusCode, String codeProject) {
         String response = super.get(statusCode, "project/" + codeProject);
         return gson.fromJson(response, PositiveResponseStatus.class);
     }
