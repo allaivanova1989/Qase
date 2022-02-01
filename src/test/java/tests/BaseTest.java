@@ -14,10 +14,12 @@ public class BaseTest {
     HomePage homePage;
     LoginPage loginPage;
     ProjectsPage projectsPage;
-    SomeProjectPage someProjectPage;
-    ProjectListPage projectListPage;
+    PageForProjectForTMS pageForProjectForTMS;
     CreateTestCaseModalPage createTestCaseModalPage;
     TestCaseDetailsPage testCaseDetailsPage;
+    StartTestRunPage startTestRunPage;
+    TestRunDetailsPage testRunDetailsPage;
+
 
     @BeforeMethod
     public void setUp() {
@@ -34,10 +36,11 @@ public class BaseTest {
         homePage = new HomePage();
         loginPage = new LoginPage();
         projectsPage = new ProjectsPage();
-        someProjectPage = new SomeProjectPage();
-        projectListPage = new ProjectListPage();
+        pageForProjectForTMS = new PageForProjectForTMS();
         createTestCaseModalPage = new CreateTestCaseModalPage();
         testCaseDetailsPage = new TestCaseDetailsPage();
+        startTestRunPage = new StartTestRunPage();
+        testRunDetailsPage = testRunDetailsPage;
 
 
 //        ChromeOptions chromeOptions = new ChromeOptions();

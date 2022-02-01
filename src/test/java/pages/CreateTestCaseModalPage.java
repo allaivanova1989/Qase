@@ -1,12 +1,11 @@
 package pages;
 
-import elements.DropDownForCreateTestCase;
-import elements.InputForCreateTestCase;
+import elements.DropDown;
+import elements.Input;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import modals.TestCase;
 import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
@@ -23,25 +22,25 @@ private static final By SAVE_AND_CREATE_ANOTHER_BUTTON =By.cssSelector("[class='
     @Step("Creating testCase")
     public TestCaseDetailsPage create(TestCase testCase) throws InterruptedException {
         log.info("Creating testCase");
-        new InputForCreateTestCase( "Title").write(testCase.getTitle());
-        new DropDownForCreateTestCase("Status").selectOption(testCase.getStatus());
-        new InputForCreateTestCase( "Description").write(testCase.getDescription());
-        new DropDownForCreateTestCase("Suite").selectOption(testCase.getSuite());
-        new DropDownForCreateTestCase("Severity").selectOption(testCase.getSeverity());
-        new DropDownForCreateTestCase("Priority").selectOption(testCase.getPriority());
-        new DropDownForCreateTestCase("Type").selectOption(testCase.getType());
-        new DropDownForCreateTestCase("Layer").selectOption(testCase.getLayer());
-        new DropDownForCreateTestCase("Is Flaky").selectOption(testCase.getIsFlaky());
-        new DropDownForCreateTestCase("Milestone").selectOption(testCase.getMilestone());
-        new DropDownForCreateTestCase("Behavior").selectOption(testCase.getBehavior());
-        new DropDownForCreateTestCase("Automation status").selectOption(testCase.getAutomationStatus());
-        new InputForCreateTestCase( "Pre-conditions").write(testCase.getPreConditions());
-        new InputForCreateTestCase( "Post-conditions").write(testCase.getPostConditions());
+        new Input( "Title").write(testCase.getTitle());
+        new DropDown("Status").selectOption(testCase.getStatus());
+        new Input( "Description").write(testCase.getDescription());
+        new DropDown("Suite").selectOption(testCase.getSuite());
+        new DropDown("Severity").selectOption(testCase.getSeverity());
+        new DropDown("Priority").selectOption(testCase.getPriority());
+        new DropDown("Type").selectOption(testCase.getType());
+        new DropDown("Layer").selectOption(testCase.getLayer());
+        new DropDown("Is Flaky").selectOption(testCase.getIsFlaky());
+        new DropDown("Milestone").selectOption(testCase.getMilestone());
+        new DropDown("Behavior").selectOption(testCase.getBehavior());
+        new DropDown("Automation status").selectOption(testCase.getAutomationStatus());
+        new Input( "Pre-conditions").write(testCase.getPreConditions());
+        new Input( "Post-conditions").write(testCase.getPostConditions());
         $(By.xpath("//a[contains(text(),' Add step')]")).scrollIntoView(true);
         $(By.xpath("//a[contains(text(),' Add step')]")).click();
-        new InputForCreateTestCase( "Action").writeForAddSteps(testCase.getAction());
-        new InputForCreateTestCase( "Input data").writeForAddSteps(testCase.getInputData());
-        new InputForCreateTestCase( "Expected result").writeForAddSteps(testCase.getExpectedResult());
+        new Input( "Action").writeForAddSteps(testCase.getAction());
+        new Input( "Input data").writeForAddSteps(testCase.getInputData());
+        new Input( "Expected result").writeForAddSteps(testCase.getExpectedResult());
 
         return clickSave();
 

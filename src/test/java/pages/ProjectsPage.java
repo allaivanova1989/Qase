@@ -18,9 +18,14 @@ public class ProjectsPage {
     public static final By FIELD_FOR_NAME = By.cssSelector("[placeholder='For example: Web Application']");
     public static final By FIELD_FOR_CODE_PROJECT = By.cssSelector("[placeholder='For example: WA']");
     private String CODE;
+    private String NAME_PROJECT;
 
     public String getCODE() {
         return CODE;
+    }
+
+    public String getNAME_PROJECT() {
+        return NAME_PROJECT;
     }
 
     static Faker faker = new Faker();
@@ -64,10 +69,11 @@ public class ProjectsPage {
         log.debug("Create new project");
         $(CREATE_NEW_PROJECT_BUTTON).click();
         $(FIELD_FOR_NAME).sendKeys(faker.gameOfThrones().dragon());
+        NAME_PROJECT = $(FIELD_FOR_NAME).getValue();
         CODE = $(FIELD_FOR_CODE_PROJECT).getValue();
         $(By.xpath("//label[contains(text(),'Public')]")).click();
-
         $("[type='submit']").click();
-
     }
+
+
 }

@@ -10,21 +10,20 @@ import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
 
-public class DropDownForCreateTestCase {
+public class DropDown {
     private String dropDownLocator = "//label[contains(text(),'%s')]/ancestor::div/input/../div[span]";
     String label;
 
-    public DropDownForCreateTestCase(String label) {
+    public DropDown(String label) {
         this.label = label;
     }
 
     public void selectOption(String option) throws InterruptedException {
-        log.info("Selecting an option from the list by name when creating test case");
+        log.info("Selecting an option from the list by name ");
         $(By.xpath(String.format(dropDownLocator, this.label))).click();
         Thread.sleep(1000);
         $(byText(option)).click();
 
     }
-
 
 }

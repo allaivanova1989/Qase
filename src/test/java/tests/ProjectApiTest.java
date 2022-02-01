@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j2;
 import modals.*;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
 @Log4j2
@@ -24,10 +23,7 @@ public class ProjectApiTest {
                 .errorMessage("Data is invalid.")
                 .build();
 
-
         assertEquals(actual, expected);
-//        assertEquals(actual.isStatus(), expected.isStatus());
-//        assertEquals(actual.getErrorMessage(), expected.getErrorMessage());
 
     }
 
@@ -74,12 +70,12 @@ public class ProjectApiTest {
     @Test
     public void getEmptyProjectByRealNameTest() {
         log.info("Search project by correct code and name without cases, suites and other.");
-        PositiveResponseStatus actual = new ProjectAdapter().getProjectFromPositiveResponse(200, "B000BSH8AQ");
+        PositiveResponseStatus actual = new ProjectAdapter().getProjectFromPositiveResponse(200, "TPN");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()
-                        .title("The Doors of Perception")
-                        .code("B000BSH8AQ")
+                        .title("test project Name")
+                        .code("TPN")
                         .counts(Counts.builder()
                                 .cases(0)
                                 .suites(0)
@@ -98,15 +94,5 @@ public class ProjectApiTest {
 
         assertEquals(actual, expected);
     }
-//    @Test
-//    public void positiveApiTest() {
-//        Project project = Project.builder()
-//                .title("ForApiTestProject")
-//                .code("QWERTY")
-//                .build();
-//        String actual = new ProjectAdapter().post(project, 200);
-//
-//                assertEquals(actual,
-//                "{\"status\":true,\"result\":{\"code\":\"QWERTY\"}}");
-//    }
+
 }

@@ -5,21 +5,20 @@ import modals.TestCase;
 import modals.TestCaseFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
-public class CreateTestCaseTest extends BaseTest{
+public class CreateTestCaseTest extends BaseTest {
 
     @Test(description = "Creating new account")
     public void testCaseShouldBeCreated() throws InterruptedException, IOException {
         log.info("Creating new test case.");
         open("/login");
-        loginPage.login(email,password);
+        loginPage.login(email, password);
 
-        boolean isCreateTestCaseModalOpen = projectListPage
+        boolean isCreateTestCaseModalOpen = pageForProjectForTMS
                 .opened()
                 .clickCase()
                 .isPageOpen();
@@ -30,7 +29,7 @@ public class CreateTestCaseTest extends BaseTest{
         boolean isTestCaseDetailsPage = createTestCaseModalPage
                 .create(testCase)
                 .isPageOpen();
-       Thread.sleep(1000);
+        Thread.sleep(1000);
         Assert.assertTrue(isTestCaseDetailsPage, "Страница Details не открылась.");
 
     }

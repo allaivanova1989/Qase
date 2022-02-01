@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest {
     public void loginWithValidEmailAndPassword() {
         log.debug("Login to the site using  valid email and password");
         open("/login");
-        loginPage.login(email,password);
+        loginPage.login(email, password);
 
         $(".avatar-sm ").shouldBe(visible);
     }
@@ -25,7 +25,7 @@ public class LoginTest extends BaseTest {
     public void loginWithValidEmailAndEmptyPassword() {
         log.debug("Login to the site using a email and empty password");
         open("/login");
-        loginPage.login(email,"");
+        loginPage.login(email, "");
 
         $(LoginPage.FIELD_PASSWORD).shouldHave(attribute("validationMessage"));
     }
@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest {
     public void loginWithEmptyEmailAndValidPassword() {
         log.debug("Login to the site using an empty email and valid password");
         open("/login");
-        loginPage.login("",password);
+        loginPage.login("", password);
 
         $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage"));
     }
@@ -43,7 +43,7 @@ public class LoginTest extends BaseTest {
     public void loginWithEmptyEmailAndEmptyPassword() {
         log.debug("Login to the site using an empty email and empty password");
         open("/login");
-        loginPage.login("","");
+        loginPage.login("", "");
 
         $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage"));
     }
@@ -52,7 +52,7 @@ public class LoginTest extends BaseTest {
     public void loginWithInvalidEmailAndInvalidPassword() {
         log.debug("Login to the site using an invalid email and invalid password");
         open("/login");
-        loginPage.login("ggiih","dtdtfyig");
+        loginPage.login("ggiih", "dtdtfyig");
 
         $(LoginPage.FIELD_EMAIL).shouldHave(attribute("validationMessage"));
     }

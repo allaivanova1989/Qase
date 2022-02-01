@@ -1,16 +1,18 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.ProjectsPage;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-
+@Log4j2
 public class ProjectsTest extends BaseTest{
     @Test(description = "Create new projects.")
     public void createProject (){
+        log.info("Create project.");
         open("/login");
         loginPage.login(email,password);
         projectsPage.createNewProject();
