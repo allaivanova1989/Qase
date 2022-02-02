@@ -36,9 +36,7 @@ public class StartTestRunPage extends BasePage {
         new DropDown("Milestone").selectOption(testRun.getMilestone());
         new DropDown("Default assignee").selectOption(testRun.getDefaultAssignee());
         $(By.id("edit-run-add-cases-button")).click();
-        $(By.xpath("//span[@class='custom-control-indicator']")).click();
-        $(By.xpath("//span[@class='custom-control-indicator']")).click();
-        Thread.sleep(10000);
+        $(By.xpath("//div[@class='suites-column']//span[@class='custom-control-indicator']")).click();
         $(By.xpath("//button[contains(text(),'Done')]")).click();
 
         return clickStartRun();

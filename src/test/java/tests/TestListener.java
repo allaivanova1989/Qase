@@ -14,6 +14,6 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
-        AllureUtils.screenshot();
+        AllureUtils.takescreenshot();
     }
 }
