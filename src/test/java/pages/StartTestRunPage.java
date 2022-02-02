@@ -37,6 +37,8 @@ public class StartTestRunPage extends BasePage {
         new DropDown("Default assignee").selectOption(testRun.getDefaultAssignee());
         $(By.id("edit-run-add-cases-button")).click();
         $(By.xpath("//span[@class='custom-control-indicator']")).click();
+        $(By.xpath("//span[@class='custom-control-indicator']")).click();
+        Thread.sleep(10000);
         $(By.xpath("//button[contains(text(),'Done')]")).click();
 
         return clickStartRun();
