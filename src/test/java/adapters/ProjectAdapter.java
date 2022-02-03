@@ -1,13 +1,16 @@
 package adapters;
 
-import modals.PositiveResponseStatus;
-import modals.Project;
-import modals.NegativeResponseStatus;
+import modals.*;
+
 
 public class ProjectAdapter extends BaseAdapter {
     public NegativeResponseStatus post(Project project, int statusCode) {
         String response = post(gson.toJson(project, Project.class), statusCode, "project/");
         return gson.fromJson(response, NegativeResponseStatus.class);
+    }
+    public PositiveResponsStatusForCreatProject post2(Project project, int statusCode) {
+        String response = post(gson.toJson(project, Project.class), statusCode, "project/");
+        return gson.fromJson(response, PositiveResponsStatusForCreatProject.class);
     }
 
     public NegativeResponseStatus getProjectFromNegativeResponse(int statusCode, String codeProject) {
@@ -19,7 +22,5 @@ public class ProjectAdapter extends BaseAdapter {
         return gson.fromJson(response, PositiveResponseStatus.class);
     }
 
-//    public String delete(int statusCode) {
-//        return delete(statusCode);
-//    }
+
 }

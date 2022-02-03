@@ -1,6 +1,7 @@
 package tests;
 
 import adapters.ProjectAdapter;
+import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
 import modals.*;
 import org.testng.annotations.Test;
@@ -9,6 +10,8 @@ import static org.testng.Assert.assertEquals;
 
 @Log4j2
 public class ProjectApiTest {
+    static Faker faker = new Faker();
+
     @Test
     public void negativeProjectApiTest() {
         log.info("Creating new project with incorrect code.");
@@ -22,6 +25,24 @@ public class ProjectApiTest {
                 .status(false)
                 .errorMessage("Data is invalid.")
                 .build();
+
+        assertEquals(actual, expected);
+
+    }
+
+    @Test
+    public void positiveProjectApiTest() {
+        log.info("Creating new project with correct code.");
+        Project project = Project.builder()
+                .title(faker.pokemon().name())
+                .code(faker.regexify("[A-Z]{7}"))
+                .build();
+        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().post2(project, 200);
+
+        PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
+                .status(true)
+                .build();
+
 
         assertEquals(actual, expected);
 
@@ -95,4 +116,4 @@ public class ProjectApiTest {
         assertEquals(actual, expected);
     }
 
-}
+  }
