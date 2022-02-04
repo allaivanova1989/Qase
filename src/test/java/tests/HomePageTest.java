@@ -59,14 +59,6 @@ public class HomePageTest extends BaseTest {
         $(".modal-video-inner").shouldBe(visible);
     }
 
-    @Test(description = "Viewing usage information")
-    public void checkTermsOfService() {
-        log.info("Viewing usage information");
-        open("");
-        homePage.clickOnTermsOfService();
-        $(By.xpath("//section[@class='text-left']")).shouldHave(text("Terms of Use"));
-    }
-
     @Test(description = "Viewing privacy police")
     public void checkPrivacyPolice() {
         log.info("Viewing privacy police");

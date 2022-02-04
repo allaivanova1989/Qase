@@ -14,7 +14,6 @@ public class HomePage {
     public static final By HYPERLINK_PRICING = By.xpath("//a[contains(text(),'Pricing')]");
     public static final By BUTTON_REQUEST_A_DEMO = By.xpath("//a[contains(text(),'REQUEST A DEMO')]");
     public static final By HYPERLINK_WATCH_VIDEO = By.xpath("//i[@class='fa fa-play']");
-    public static final By HYPERLINK_TERMS_OF_SERVICE = By.xpath("//a[contains(text(),'Terms of Service')]");
     public static final By HYPERLINK_PRIVACY_POLICE = By.xpath("//a[contains(text(),'Privacy policy')]");
 
     @Step("Click on login")
@@ -51,12 +50,6 @@ public class HomePage {
     public void clickOnWatchVideo() {
         log.info("Click on Watch video");
         $(HYPERLINK_WATCH_VIDEO).click();
-    }
-
-    @Step("Click on Terms of service")
-    public void clickOnTermsOfService() {
-        log.info("Click on Terms of service");
-        $(HYPERLINK_TERMS_OF_SERVICE).click();
     }
 
     @Step("Click on Privacy Police")

@@ -19,7 +19,7 @@ public class ProjectApiTest {
                 .title("blabla")
                 .code("!!!!!")
                 .build();
-        NegativeResponseStatus actual = new ProjectAdapter().post(project, 422);
+        NegativeResponseStatus actual = new ProjectAdapter().postWithIncorrectData(project, 422);
 
         NegativeResponseStatus expected = NegativeResponseStatus.builder()
                 .status(false)
@@ -37,7 +37,7 @@ public class ProjectApiTest {
                 .title(faker.pokemon().name())
                 .code(faker.regexify("[A-Z]{7}"))
                 .build();
-        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().post2(project, 200);
+        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().postWithCorrectData(project, 200);
 
         PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
                 .status(true)
@@ -51,7 +51,7 @@ public class ProjectApiTest {
     @Test
     public void getProjectByInvalidNameTest() {
         log.info("Search project by incorrect code.");
-        NegativeResponseStatus actual = new ProjectAdapter().getProjectFromNegativeResponse(404, "QWEQWwws");
+        NegativeResponseStatus actual = new ProjectAdapter().getProjectWithIncorrectCode(404, "QWEQWwws");
         NegativeResponseStatus expected = NegativeResponseStatus.builder()
                 .status(false)
                 .errorMessage("Project is not found.")
@@ -63,7 +63,7 @@ public class ProjectApiTest {
     @Test
     public void getProjectByRealNameAndNotEmptyTest() {
         log.info("Search project by correct code and name with cases, suites and other.");
-        PositiveResponseStatus actual = new ProjectAdapter().getProjectFromPositiveResponse(200, "DEMO");
+        PositiveResponseStatus actual = new ProjectAdapter().getProjectWithCorrectCode(200, "DEMO");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()
@@ -91,7 +91,7 @@ public class ProjectApiTest {
     @Test
     public void getEmptyProjectByRealNameTest() {
         log.info("Search project by correct code and name without cases, suites and other.");
-        PositiveResponseStatus actual = new ProjectAdapter().getProjectFromPositiveResponse(200, "TPN");
+        PositiveResponseStatus actual = new ProjectAdapter().getProjectWithCorrectCode(200, "TPN");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()

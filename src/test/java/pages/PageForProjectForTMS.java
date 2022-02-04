@@ -4,13 +4,14 @@ import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
 
-public class PageForProjectForTMS extends BasePage{
+public class PageForProjectForTMS extends BasePage {
     private static final By Projects_PICTURE = By.xpath("//h1[contains(text(), 'Projects')]");
     private String nameOfTestPlan;
     static Faker faker = new Faker();
@@ -28,7 +29,7 @@ public class PageForProjectForTMS extends BasePage{
     @Step("Open the page PageForProjectForTMS")
     public PageForProjectForTMS opened() {
         log.info("Open the page PageForProjectForTMS");
-        open( "https://app.qase.io/project/TMSALLA?view=2&suite=1");
+        open("https://app.qase.io/project/TMSALLA?view=2&suite=1");
         return this;
     }
 
@@ -38,6 +39,7 @@ public class PageForProjectForTMS extends BasePage{
         $(By.id("create-case-button")).click();
         return new CreateTestCaseModalPage();
     }
+
     @Step("Click Test Plans on the page ProjectPage")
     public void createTestPlan() {
         log.info("Create test plans on the page ProjectPage");
@@ -51,9 +53,18 @@ public class PageForProjectForTMS extends BasePage{
         $(By.id("select-cases-done-button")).click();
         $(By.id("save-plan")).click();
     }
+
     @Step("Create new run for test")
     public StartTestRunPage startCreatingNewRun() {
         $(By.xpath("//span[contains(text(), 'Test Runs')]")).click();
+        try {
+            log.warn("Can get an exception NoSuchElementException");
+            $(By.xpath("//a[@class='btn btn-dropdown'][1]")).click();
+            $(By.xpath("//a[contains(text(),'Delete')]")).click();
+            $(By.xpath("//button[contains(text(),' Delete run')]")).click();
+        } catch (NoSuchElementException ex) {
+            log.error("......" + ex.getMessage());
+        }
         $(By.id("start-new-test-run-button")).click();
         return new StartTestRunPage();
     }
