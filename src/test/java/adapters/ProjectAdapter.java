@@ -1,7 +1,5 @@
 package adapters;
-
 import modals.*;
-
 
 public class ProjectAdapter extends BaseAdapter {
     public NegativeResponseStatus postWithIncorrectData(Project project, int statusCode) {
@@ -20,6 +18,10 @@ public class ProjectAdapter extends BaseAdapter {
     public PositiveResponseStatus getProjectWithCorrectCode(int statusCode, String codeProject) {
         String response = super.get(statusCode, "project/" + codeProject);
         return gson.fromJson(response, PositiveResponseStatus.class);
+    }
+    public PositiveResponsStatusForCreatProject deleteProjectByCorrectCode(int statusCode, String codeProject) {
+        String response = super.delete(statusCode, "project/" + codeProject);
+        return gson.fromJson(response, PositiveResponsStatusForCreatProject.class);
     }
 
 

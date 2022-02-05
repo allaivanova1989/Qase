@@ -5,7 +5,6 @@ import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
 import modals.*;
 import org.testng.annotations.Test;
-
 import static org.testng.Assert.assertEquals;
 
 @Log4j2
@@ -116,4 +115,15 @@ public class ProjectApiTest {
         assertEquals(actual, expected);
     }
 
-  }
+
+//    @Test
+//    public void deleteProjectByCodeTest() {
+//        log.info("Delete project by code.");
+//        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().deleteProjectByCorrectCode(200, "VERMITHRAX");
+//        PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
+//                .status(true)
+//                .build();
+//
+//        assertEquals(actual, expected);
+//    }
+}
