@@ -60,11 +60,12 @@ public class ProjectsPage {
     }
 
     @Step("Create new project")
-    public void createNewProject() throws InterruptedException {
+    public void createNewProject()  {
         log.debug("Create new project");
         $(CREATE_NEW_PROJECT_BUTTON).click();
         $(FIELD_FOR_NAME).sendKeys(faker.gameOfThrones().dragon());
-        Thread.sleep(10000);
+        $(FIELD_FOR_CODE_PROJECT).clear();
+        $(FIELD_FOR_CODE_PROJECT).sendKeys(faker.regexify("[A-Z]{7}"));
         CODE = $(FIELD_FOR_CODE_PROJECT).getValue();
         $(By.xpath("//label[contains(text(),'Public')]")).click();
         $("[type='submit']").click();

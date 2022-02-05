@@ -25,7 +25,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         log.info("Setup options and configurations.");
-        Configuration.headless = true;
+       // Configuration.headless = true;
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));

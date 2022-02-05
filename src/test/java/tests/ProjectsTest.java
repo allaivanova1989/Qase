@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Log4j2
 public class ProjectsTest extends BaseTest{
     @Test(description = "Create new projects.")
-    public void createProject () throws InterruptedException {
+    public void createProject ()  {
         log.info("Create project.");
         open("/login");
         loginPage.login(email,password);
