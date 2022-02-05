@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class AllureUtils {
-    @Attachment(value="screenshot",type = "image/png")
+    @Attachment(value="{0}",type = "image/png")
     public static byte[] takescreenshot() throws IOException {
         File screenshot = Screenshots.getLastScreenshot();
         FileUtils.copyFile(screenshot, new File("target\\allure-results\\screenshots\\" + screenshot.getName()));

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 @Log4j2
-public class SuiteApiTest extends BaseTest{
+public class SuiteApiTest{
     static Faker faker = new Faker();
     @Test
     public void positiveSuiteCreating() {
