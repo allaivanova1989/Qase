@@ -16,7 +16,6 @@ public class ProjectsTest extends BaseTest{
         open("/login");
         loginPage.login(email,password);
         projectsPage.createNewProject();
-        Thread.sleep(1000);
         $(By.xpath("//div[@class='app']//div//h1")).shouldHave(Condition.text(projectsPage.getCODE()));
 
     }
