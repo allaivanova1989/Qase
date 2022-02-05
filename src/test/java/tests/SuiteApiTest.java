@@ -19,7 +19,7 @@ public class SuiteApiTest extends BaseTest{
                 .title(faker.pokemon().name())
                 .description(faker.rickAndMorty().location())
                 .preconditions(faker.expression("Site is open"))
-                .parent_id(faker.number().randomDigitNotZero())
+                .parent_id(1)
 
                 .build();
         PositiveResponsStatusForSuite actual = new SuiteAdapter().post(suite, 200, "SL");
