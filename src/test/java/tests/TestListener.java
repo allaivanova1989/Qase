@@ -8,16 +8,22 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.AllureUtils;
 
+import java.io.IOException;
 
 
 @Log4j2
 public class TestListener implements ITestListener {
 
-    @SneakyThrows
+
     @Override
     public void onTestFailure(ITestResult result) {
+        try {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
+
             AllureUtils.takescreenshot();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
