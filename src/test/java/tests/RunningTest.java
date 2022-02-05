@@ -6,16 +6,14 @@ import modals.TestRunFactory;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.AllureUtils;
 
-import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
 public class RunningTest extends BaseTest {
     @Test(description = "Creat and start new test run")
-    public void createNewTestRun() throws InterruptedException, IOException {
+    public void createNewTestRun() throws InterruptedException{
         log.info("Create test run");
                 open("/login");
                 loginPage.login(email,password);
@@ -32,7 +30,7 @@ public class RunningTest extends BaseTest {
                 .isPageOpen();
         Thread.sleep(1000);
         Assert.assertTrue(isTestRunDetailsPage, "Страница Details не открылась.");
-        AllureUtils.takescreenshot();
+
 
     }
 }
