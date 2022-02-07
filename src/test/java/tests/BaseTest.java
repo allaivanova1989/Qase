@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.*;
 import pages.*;
@@ -8,7 +10,7 @@ import utils.PropertyReader;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-@Listeners(TestListener.class)
+//@Listeners(TestListener.class)
 @Log4j2
 public class BaseTest {
     String email, password;
@@ -31,11 +33,13 @@ public class BaseTest {
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
         Configuration.browser = "chrome";
-        Configuration.screenshots = true;
+//        Configuration.screenshots = true;
         //      Configuration.clickViaJs = true;
-        Configuration.savePageSource = false;
-        Configuration.timeout = 20000;
-        homePage = new HomePage();
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
+       // Configuration.savePageSource = false;
+        Configuration.timeout = 10000;
+//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
+       homePage = new HomePage();
         loginPage = new LoginPage();
         projectsPage = new ProjectsPage();
         pageForProjectForTMS = new PageForProjectForTMS();
