@@ -55,6 +55,7 @@ public class HomePage {
     @Step("Click on Privacy Police")
     public void clickOnPrivacyPolice() {
         log.info("Click on Privacy Police");
+        $(HYPERLINK_PRIVACY_POLICE).scrollIntoView(true);
         $(HYPERLINK_PRIVACY_POLICE).click();
     }
 
