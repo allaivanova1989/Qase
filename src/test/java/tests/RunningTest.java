@@ -33,6 +33,6 @@ public class RunningTest extends BaseTest {
         Thread.sleep(1000);
         Assert.assertTrue(isTestRunDetailsPage, "Страница Details не открылась.");
 
-
+ AllureUtils.takeScreenshot();
     }
 }
