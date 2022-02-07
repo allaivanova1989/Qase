@@ -10,12 +10,13 @@ import static com.codeborne.selenide.Selenide.open;
 @Log4j2
 public class CreateTestPlanTest extends BaseTest {
     @Test(description = "Creating a new test plan for the site ShareLane.")
-    public void createNewTestPlan() {
+    public void createNewTestPlan() throws InterruptedException {
         log.info("Creating new test plan.");
         open("/login");
         loginPage.login(email, password);
         $(By.xpath("//a[@class='defect-title'][text()='Project for TMS']")).click();
         pageForProjectForTMS.createTestPlan();
+        Thread.sleep(20000);
         $("[class='defect-title']").shouldHave(text(pageForProjectForTMS.getNameOfTestPlan()));
 
     }
