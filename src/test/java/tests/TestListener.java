@@ -15,14 +15,12 @@ import java.io.IOException;
 public class TestListener implements ITestListener {
 
 
+    @SneakyThrows
     @Override
     public void onTestFailure(ITestResult result) {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
-        try {
-            AllureUtils.takescreenshot();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                   AllureUtils.takescreenshot();
+
 
     }
 }
