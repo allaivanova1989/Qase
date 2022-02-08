@@ -10,7 +10,7 @@ import utils.PropertyReader;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-//@Listeners(TestListener.class)
+
 @Log4j2
 public class BaseTest {
     String email, password;
@@ -33,13 +33,10 @@ public class BaseTest {
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
         Configuration.browser = "chrome";
-//        Configuration.screenshots = true;
-        //      Configuration.clickViaJs = true;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
-       // Configuration.savePageSource = false;
+        // Configuration.savePageSource = false;
         Configuration.timeout = 10000;
-//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
-       homePage = new HomePage();
+        homePage = new HomePage();
         loginPage = new LoginPage();
         projectsPage = new ProjectsPage();
         pageForProjectForTMS = new PageForProjectForTMS();
@@ -49,9 +46,6 @@ public class BaseTest {
         testRunDetailsPage = new TestRunDetailsPage();
 
 
-//        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("headless");
-//        Configuration.browserCapabilities = chromeOptions;
     }
 
     @AfterMethod(alwaysRun = true)
