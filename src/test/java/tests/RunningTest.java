@@ -6,9 +6,6 @@ import modals.TestRunFactory;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.AllureUtils;
-
-import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -33,6 +30,5 @@ public class RunningTest extends BaseTest {
         Thread.sleep(1000);
         Assert.assertTrue(isTestRunDetailsPage, "Страница Details не открылась.");
 
- AllureUtils.takeScreenshot();
     }
 }
