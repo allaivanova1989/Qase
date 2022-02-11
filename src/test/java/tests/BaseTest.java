@@ -29,6 +29,7 @@ public class BaseTest {
         log.info("Setup options and configurations.");
         Configuration.headless = true;
         Configuration.browserSize = "1920x1080";
+        Configuration.browserVersion="97";
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
