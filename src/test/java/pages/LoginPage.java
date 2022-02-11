@@ -15,8 +15,8 @@ public class LoginPage {
     @Step("Enter to the site with  email and password")
     public void login(String email, String password){
         log.info("Enter to the site with  email and password");
-        $(FIELD_EMAIL).sendKeys(email);
-        $(FIELD_PASSWORD).sendKeys(password);
+        $(FIELD_EMAIL).setValue(email);
+        $(FIELD_PASSWORD).setValue(password);
         $(BUTTON_LOGIN).click();
     }
 }
