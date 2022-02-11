@@ -16,11 +16,11 @@ public class Input {
 
     public void write(String text) {
         log.info("Write the text in the input field by the specified name ");
-        $(By.xpath(String.format(inputLocator, this.Label))).setValue(text);
+        $(By.xpath(String.format(inputLocator, this.Label))).sendKeys(text);
     }
 
     public void writeForAddSteps(String text) {
-        $(By.xpath(String.format(inputLocatorAddSteps, this.Label))).setValue(text);
+        $(By.xpath(String.format(inputLocatorAddSteps, this.Label))).sendKeys(text);
     }
 
 }

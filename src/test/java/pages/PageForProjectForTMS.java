@@ -45,9 +45,9 @@ public class PageForProjectForTMS extends BasePage {
         log.info("Create test plans on the page ProjectPage");
         $(By.xpath("//span[contains(text(),'Test Plans')]")).click();
         $(By.id("createButton")).click();
-        $(By.id("title")).setValue(faker.rickAndMorty().location());
+        $(By.id("title")).sendKeys(faker.rickAndMorty().location());
         nameOfTestPlan = $(By.id("title")).getValue();
-        $(By.xpath("//p[@data-placeholder='For example: Full regression']")).setValue(faker.rickAndMorty().character());
+        $(By.xpath("//p[@data-placeholder='For example: Full regression']")).sendKeys(faker.rickAndMorty().character());
         $(By.id("edit-plan-add-cases-button")).click();
         $(By.cssSelector("[class='custom-control-indicator']")).click();
         $(By.id("select-cases-done-button")).click();

@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
 import modals.*;
 import org.testng.annotations.Test;
+
 import static org.testng.Assert.assertEquals;
 
 @Log4j2
@@ -38,7 +39,7 @@ public class ProjectApiTest {
                 .title(faker.pokemon().name())
                 .code(faker.regexify("[A-Z]{7}"))
                 .build();
-       code = project.getCode();
+        code = project.getCode();
         title = project.getTitle();
         PositiveResponsStatusForCreatProject actual = new ProjectAdapter().postWithCorrectData(project, 200);
 
@@ -66,12 +67,12 @@ public class ProjectApiTest {
     @Test
     public void getProjectByRealNameAndNotEmptyTest() {
         log.info("Search project by correct code and name with cases, suites and other.");
-        PositiveResponseStatus actual = new ProjectAdapter().getProjectWithCorrectCode(200, code);
+        PositiveResponseStatus actual = new ProjectAdapter().getProjectWithCorrectCode(200, "DEMO");
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()
-                        .title(title)
-                        .code(code)
+                        .title("Demo Project")
+                        .code("DEMO")
                         .counts(Counts.builder()
                                 .cases(10)
                                 .suites(3)
@@ -123,7 +124,7 @@ public class ProjectApiTest {
     @Test
     public void deleteProjectByCodeTest() {
         log.info("Delete project by code.");
-        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().deleteProjectByCorrectCode(200, "VERMITHRAX");
+        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().deleteProjectByCorrectCode(200, code);
         PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
                 .status(true)
                 .build();
