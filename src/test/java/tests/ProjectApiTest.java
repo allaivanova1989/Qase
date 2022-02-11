@@ -10,6 +10,8 @@ import static org.testng.Assert.assertEquals;
 @Log4j2
 public class ProjectApiTest {
     static Faker faker = new Faker();
+    public static String code;
+    public static String title;
 
     @Test
     public void negativeProjectApiTest() {
@@ -36,6 +38,8 @@ public class ProjectApiTest {
                 .title(faker.pokemon().name())
                 .code(faker.regexify("[A-Z]{7}"))
                 .build();
+       code = project.getCode();
+        title = project.getTitle();
         PositiveResponsStatusForCreatProject actual = new ProjectAdapter().postWithCorrectData(project, 200);
 
         PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
@@ -62,12 +66,12 @@ public class ProjectApiTest {
     @Test
     public void getProjectByRealNameAndNotEmptyTest() {
         log.info("Search project by correct code and name with cases, suites and other.");
-        PositiveResponseStatus actual = new ProjectAdapter().getProjectWithCorrectCode(200, "DEMO");
+        PositiveResponseStatus actual = new ProjectAdapter().getProjectWithCorrectCode(200, code);
         PositiveResponseStatus expected = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()
-                        .title("Demo Project")
-                        .code("DEMO")
+                        .title(title)
+                        .code(code)
                         .counts(Counts.builder()
                                 .cases(10)
                                 .suites(3)
@@ -116,14 +120,14 @@ public class ProjectApiTest {
     }
 
 
-//    @Test
-//    public void deleteProjectByCodeTest() {
-//        log.info("Delete project by code.");
-//        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().deleteProjectByCorrectCode(200, "VERMITHRAX");
-//        PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
-//                .status(true)
-//                .build();
-//
-//        assertEquals(actual, expected);
-//    }
+    @Test
+    public void deleteProjectByCodeTest() {
+        log.info("Delete project by code.");
+        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().deleteProjectByCorrectCode(200, "VERMITHRAX");
+        PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
+                .status(true)
+                .build();
+
+        assertEquals(actual, expected);
+    }
 }
