@@ -57,18 +57,16 @@ public class PageForProjectForTMS extends BasePage {
     @Step("Create new run for test")
     public StartTestRunPage startCreatingNewRun() {
         $(By.xpath("//span[contains(text(), 'Test Runs')]")).click();
-        try {
-            log.warn("Can get an exception NoSuchElementException");
+        if ($(By.xpath("//a[@class='btn btn-dropdown'][1]")).isDisplayed()) {
             $(By.xpath("//a[@class='btn btn-dropdown'][1]")).click();
             $(By.xpath("//a[contains(text(),'Delete')]")).click();
             $(By.xpath("//button[contains(text(),' Delete run')]")).click();
-        } catch (NoSuchElementException ex) {
-            log.error("......" + ex.getMessage());
+            $(By.id("start-new-test-run-button")).click();
+        } else {
+            $(By.id("start-new-test-run-button")).click();
         }
-        $(By.id("start-new-test-run-button")).click();
         return new StartTestRunPage();
     }
-
 
 }
 

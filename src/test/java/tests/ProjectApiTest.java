@@ -32,25 +32,25 @@ public class ProjectApiTest {
 
     }
 
-    @Test
-    public void positiveProjectApiTest() {
-        log.info("Creating new project with correct code.");
-        Project project = Project.builder()
-                .title(faker.pokemon().name())
-                .code(faker.regexify("[A-Z]{7}"))
-                .build();
-        code = project.getCode();
-        title = project.getTitle();
-        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().postWithCorrectData(project, 200);
-
-        PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
-                .status(true)
-                .build();
-
-
-        assertEquals(actual, expected);
-
-    }
+//    @Test
+//    public void positiveProjectApiTest() {
+//        log.info("Creating new project with correct code.");
+//        Project project = Project.builder()
+//                .title(faker.pokemon().name())
+//                .code(faker.regexify("[A-Z]{7}"))
+//                .build();
+//        code = project.getCode();
+//        title = project.getTitle();
+//        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().postWithCorrectData(project, 200);
+//
+//        PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
+//                .status(true)
+//                .build();
+//
+//
+//        assertEquals(actual, expected);
+//
+//    }
 
     @Test
     public void getProjectByInvalidNameTest() {
@@ -123,12 +123,27 @@ public class ProjectApiTest {
 
     @Test
     public void deleteProjectByCodeTest() {
-        log.info("Delete project by code.");
-        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().deleteProjectByCorrectCode(200, code);
-        PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
+        log.info("Creating new project with correct code.");
+        Project project = Project.builder()
+                .title(faker.pokemon().name())
+                .code(faker.regexify("[A-Z]{7}"))
+                .build();
+        code = project.getCode();
+        title = project.getTitle();
+        PositiveResponsStatusForCreatProject actual1 = new ProjectAdapter().postWithCorrectData(project, 200);
+
+        PositiveResponsStatusForCreatProject expected1 = PositiveResponsStatusForCreatProject.builder()
                 .status(true)
                 .build();
 
-        assertEquals(actual, expected);
+
+        assertEquals(actual1, expected1);
+        log.info("Delete project by code.");
+        PositiveResponsStatusForCreatProject actual2 = new ProjectAdapter().deleteProjectByCorrectCode(200, code);
+        PositiveResponsStatusForCreatProject expected2 = PositiveResponsStatusForCreatProject.builder()
+                .status(true)
+                .build();
+
+        assertEquals(actual2, expected2);
     }
 }

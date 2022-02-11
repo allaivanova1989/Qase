@@ -36,7 +36,6 @@ public class BaseTest {
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
         Configuration.browser = "chrome";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
-        // Configuration.savePageSource = false;
         Configuration.timeout = 10000;
         homePage = new HomePage();
         loginPage = new LoginPage();
@@ -46,7 +45,6 @@ public class BaseTest {
         testCaseDetailsPage = new TestCaseDetailsPage();
         startTestRunPage = new StartTestRunPage();
         testRunDetailsPage = new TestRunDetailsPage();
-
 
     }
 
