@@ -32,25 +32,6 @@ public class ProjectApiTest {
 
     }
 
-//    @Test
-//    public void positiveProjectApiTest() {
-//        log.info("Creating new project with correct code.");
-//        Project project = Project.builder()
-//                .title(faker.pokemon().name())
-//                .code(faker.regexify("[A-Z]{7}"))
-//                .build();
-//        code = project.getCode();
-//        title = project.getTitle();
-//        PositiveResponsStatusForCreatProject actual = new ProjectAdapter().postWithCorrectData(project, 200);
-//
-//        PositiveResponsStatusForCreatProject expected = PositiveResponsStatusForCreatProject.builder()
-//                .status(true)
-//                .build();
-//
-//
-//        assertEquals(actual, expected);
-//
-//    }
 
     @Test
     public void getProjectByInvalidNameTest() {
@@ -122,7 +103,7 @@ public class ProjectApiTest {
 
 
     @Test
-    public void deleteProjectByCodeTest() {
+    public void createProjectAndDeleteProjectByCodeTest() {
         log.info("Creating new project with correct code.");
         Project project = Project.builder()
                 .title(faker.pokemon().name())

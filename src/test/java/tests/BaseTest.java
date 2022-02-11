@@ -12,7 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 
 @Log4j2
-public class BaseTest {
+public abstract class BaseTest {
     String email, password;
     HomePage homePage;
     LoginPage loginPage;

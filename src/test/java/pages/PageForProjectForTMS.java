@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -55,10 +56,12 @@ public class PageForProjectForTMS extends BasePage {
     }
 
     @Step("Create new run for test")
-    public StartTestRunPage startCreatingNewRun() {
+    public StartTestRunPage startCreatingNewRun() throws InterruptedException {
         $(By.xpath("//span[contains(text(), 'Test Runs')]")).click();
-        if ($(By.xpath("//a[@class='btn btn-dropdown'][1]")).isDisplayed()) {
-            $(By.xpath("//a[@class='btn btn-dropdown'][1]")).click();
+        Thread.sleep(1000);
+        if ($(By.xpath("//tr[1]//a[@class='btn btn-dropdown']")).is(Condition.exist)) {
+            Thread.sleep(1000);
+            $(By.xpath("//tr[1]//a[@class='btn btn-dropdown']")).click();
             $(By.xpath("//a[contains(text(),'Delete')]")).click();
             $(By.xpath("//button[contains(text(),' Delete run')]")).click();
             $(By.id("start-new-test-run-button")).click();
