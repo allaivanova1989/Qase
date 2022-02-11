@@ -63,9 +63,9 @@ public class ProjectsPage {
     public void createNewProject()  {
         log.debug("Create new project");
         $(CREATE_NEW_PROJECT_BUTTON).click();
-        $(FIELD_FOR_NAME).sendKeys(faker.gameOfThrones().dragon());
+        $(FIELD_FOR_NAME).setValue(faker.gameOfThrones().dragon());
         $(FIELD_FOR_CODE_PROJECT).clear();
-        $(FIELD_FOR_CODE_PROJECT).sendKeys(faker.regexify("[A-Z]{7}"));
+        $(FIELD_FOR_CODE_PROJECT).setValue(faker.regexify("[A-Z]{7}"));
         CODE = $(FIELD_FOR_CODE_PROJECT).getValue();
         $(By.xpath("//label[contains(text(),'Public')]")).click();
         $("[type='submit']").click();
