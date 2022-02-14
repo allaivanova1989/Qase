@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 @Log4j2
 public class CreateTestCaseTest extends BaseTest {
 
-    @Test(description = "Creating new account")
+    @Test(description = "Creating new test case")
     public void testCaseShouldBeCreated() throws InterruptedException, IOException {
         log.info("Creating new test case.");
         open("/login");

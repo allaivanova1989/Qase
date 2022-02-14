@@ -23,18 +23,25 @@ public abstract class BaseTest {
     StartTestRunPage startTestRunPage;
     TestRunDetailsPage testRunDetailsPage;
 
-
+    @Parameters({"browser"})
     @BeforeMethod
-    public void setUp() {
+    public void setUp(@Optional("chrome") String browser) {
         log.info("Setup options and configurations.");
+
+        if (browser.equals("chrome")) {
+            Configuration.browser = "chrome";
+        } else if (browser.equals("firefox")) {
+            Configuration.browser = "firefox";
+        } else if (browser.equals("edge")) {
+            Configuration.browser = "edge";
+        }
         Configuration.headless = true;
         Configuration.browserSize = "1920x1080";
-//        Configuration.browserVersion="97";
-//        Configuration.fastSetValue = true;
+        Configuration.browserPosition = "0x0";
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
-        Configuration.browser = "chrome";
+        //  Configuration.browser = "chrome";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
         Configuration.timeout = 10000;
         homePage = new HomePage();

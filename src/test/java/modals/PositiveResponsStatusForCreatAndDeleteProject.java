@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class PositiveResponsStatusForCreatProject {
+public class PositiveResponsStatusForCreatAndDeleteProject {
     boolean status;
 
 }

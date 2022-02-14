@@ -15,7 +15,7 @@ public class ProjectApiTest {
     public static String title;
 
     @Test
-    public void negativeProjectApiTest() {
+    public void negativeApiTestCreatingProjectWithIncorrectCode() {
         log.info("Creating new project with incorrect code.");
         Project project = Project.builder()
                 .title("blabla")
@@ -75,13 +75,28 @@ public class ProjectApiTest {
 
     @Test
     public void getEmptyProjectByRealNameTest() {
-        log.info("Search project by correct code and name without cases, suites and other.");
-        PositiveResponseStatus actual = new ProjectAdapter().getProjectWithCorrectCode(200, "TPN");
-        PositiveResponseStatus expected = PositiveResponseStatus.builder()
+        log.info("Creating new project with correct code.");
+        Project project = Project.builder()
+                .title(faker.pokemon().name())
+                .code(faker.regexify("[A-Z]{7}"))
+                .build();
+        code = project.getCode();
+        title = project.getTitle();
+        PositiveResponsStatusForCreatAndDeleteProject actualForCreate = new ProjectAdapter().postWithCorrectData(project, 200);
+
+        PositiveResponsStatusForCreatAndDeleteProject expectedForCreate= PositiveResponsStatusForCreatAndDeleteProject.builder()
+                .status(true)
+                .build();
+
+        assertEquals(actualForCreate, expectedForCreate);
+
+        log.info("Get information about this project.");
+        PositiveResponseStatus actualForGet = new ProjectAdapter().getProjectWithCorrectCode(200, code);
+        PositiveResponseStatus expectedForGet = PositiveResponseStatus.builder()
                 .status(true)
                 .result(Result.builder()
-                        .title("test project Name")
-                        .code("TPN")
+                        .title(title)
+                        .code(code)
                         .counts(Counts.builder()
                                 .cases(0)
                                 .suites(0)
@@ -98,7 +113,7 @@ public class ProjectApiTest {
                         .build())
                 .build();
 
-        assertEquals(actual, expected);
+        assertEquals(actualForGet, expectedForGet);
     }
 
 
@@ -111,20 +126,20 @@ public class ProjectApiTest {
                 .build();
         code = project.getCode();
         title = project.getTitle();
-        PositiveResponsStatusForCreatProject actual1 = new ProjectAdapter().postWithCorrectData(project, 200);
+        PositiveResponsStatusForCreatAndDeleteProject actualForCreate = new ProjectAdapter().postWithCorrectData(project, 200);
 
-        PositiveResponsStatusForCreatProject expected1 = PositiveResponsStatusForCreatProject.builder()
+        PositiveResponsStatusForCreatAndDeleteProject expectedForCreate = PositiveResponsStatusForCreatAndDeleteProject.builder()
                 .status(true)
                 .build();
 
+        assertEquals(actualForCreate, expectedForCreate);
 
-        assertEquals(actual1, expected1);
         log.info("Delete project by code.");
-        PositiveResponsStatusForCreatProject actual2 = new ProjectAdapter().deleteProjectByCorrectCode(200, code);
-        PositiveResponsStatusForCreatProject expected2 = PositiveResponsStatusForCreatProject.builder()
+        PositiveResponsStatusForCreatAndDeleteProject actualForDelete = new ProjectAdapter().deleteProjectByCorrectCode(200, code);
+        PositiveResponsStatusForCreatAndDeleteProject expectedForDelete = PositiveResponsStatusForCreatAndDeleteProject.builder()
                 .status(true)
                 .build();
 
-        assertEquals(actual2, expected2);
+        assertEquals(actualForDelete, expectedForDelete);
     }
 }

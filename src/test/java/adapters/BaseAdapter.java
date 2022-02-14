@@ -10,7 +10,6 @@ public class BaseAdapter {
 
     public String post(String body, int statusCode, String url) {
         log.info("Post request");
-
         return given().
                 log().all().
                 header("Token", "21de4a7cd8a374e88bb6a500bab9b0fbbd0a35f6").
@@ -24,13 +23,10 @@ public class BaseAdapter {
                 extract().
                 body().
                 asString();
-
-
     }
 
     public String get(int statusCode, String url) {
         log.info("Get request");
-
         return given().
                 log().all().
                 header("Token", "21de4a7cd8a374e88bb6a500bab9b0fbbd0a35f6").
@@ -47,7 +43,6 @@ public class BaseAdapter {
     }
     public String delete(int statusCode, String url) {
         log.info("Delete request");
-
         return given().
                 log().all().
                 header("Token", "21de4a7cd8a374e88bb6a500bab9b0fbbd0a35f6").
