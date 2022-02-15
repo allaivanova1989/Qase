@@ -20,6 +20,7 @@
         <lombok.version>1.18.8</lombok.version>
         <javafaker.version>1.0.2</javafaker.version>
         <jackson-dataformat-yaml.version>2.12.3</jackson-dataformat-yaml.version>
+        <suiteXmlFiles>src/test/resources/regression-browsers.xml</suiteXmlFiles>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -33,6 +34,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
+                    <suiteXmlFiles>${suiteXmlFiles}</suiteXmlFiles>
                     <forkCount>3</forkCount>
                     <reuseForks>true</reuseForks>
 
