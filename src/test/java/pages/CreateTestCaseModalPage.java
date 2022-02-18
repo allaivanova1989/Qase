@@ -37,6 +37,7 @@ private static final By SAVE_AND_CREATE_ANOTHER_BUTTON =By.cssSelector("[class='
         new Input( "Pre-conditions").write(testCase.getPreConditions());
         new Input( "Post-conditions").write(testCase.getPostConditions());
         $(By.xpath("//a[contains(text(),' Add step')]")).scrollIntoView(true);
+        $(By.xpath("//a[contains(text(),' Add step')]")).scrollIntoView(true);
         $(By.xpath("//a[contains(text(),' Add step')]")).click();
         new Input( "Action").writeForAddSteps(testCase.getAction());
         new Input( "Input data").writeForAddSteps(testCase.getInputData());

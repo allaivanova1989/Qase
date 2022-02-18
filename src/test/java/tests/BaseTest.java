@@ -35,9 +35,8 @@ public abstract class BaseTest {
         } else if (browser.equals("edge")) {
             Configuration.browser = "edge";
         }
-        Configuration.headless = true;
+           Configuration.headless = true;
         Configuration.browserSize = "1920x1080";
-        Configuration.browserPosition = "0x0";
         Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL", PropertyReader.getProperty("qase.url"));
         email = System.getenv().getOrDefault("QASE_EMAIL", PropertyReader.getProperty("qase.email"));
         password = System.getenv().getOrDefault("QASE_PASSWORD", PropertyReader.getProperty("qase.password"));
